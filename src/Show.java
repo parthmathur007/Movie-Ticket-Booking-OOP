@@ -35,28 +35,48 @@ public class Show {
         System.out.println("Time: " + showTime);
 
         System.out.println("Seats:");
+
         for (Seat seat : seats) {
             seat.displaySeat();
         }
     }
 
-    public Seat bookSeat(int seatNumber) throws SeatAlreadyBookedException {
+    public Seat bookSeat(int seatNumber)
+            throws SeatAlreadyBookedException {
 
-    for (Seat seat : seats) {
+        for (Seat seat : seats) {
 
-        if (seat.getSeatNumber() == seatNumber) {
+            if (seat.getSeatNumber() == seatNumber) {
 
-            if (seat.isBooked()) {
-                throw new SeatAlreadyBookedException(
-                        "Seat " + seatNumber + " is already booked!"
-                );
+                if (seat.isBooked()) {
+                    throw new SeatAlreadyBookedException(
+                            "Seat " + seatNumber + " is already booked!"
+                    );
+                }
+
+                seat.bookSeat();
+                return seat;
             }
-
-            seat.bookSeat();
-            return seat;
         }
+
+        return null;
     }
 
-    return null;
-}
+    public boolean cancelSeat(int seatNumber) {
+
+        for (Seat seat : seats) {
+
+            if (seat.getSeatNumber() == seatNumber) {
+
+                if (seat.isBooked()) {
+                    seat.cancelBooking();
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        return false;
+    }
 }

@@ -20,6 +20,10 @@ public class Seat {
         booked = true;
     }
 
+    public void cancelBooking() {
+        booked = false;
+    }
+
     public void displaySeat() {
         if (booked) {
             System.out.println("Seat " + seatNumber + " - BOOKED");

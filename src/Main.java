@@ -97,12 +97,13 @@ public class Main {
             System.out.println("3. View Seats");
             System.out.println("4. Book Ticket");
             System.out.println("5. View Previous Bookings");
-            System.out.println("6. Admin Panel");
-            System.out.println("7. Exit");
+System.out.println("6. Cancel Ticket");
+System.out.println("7. Admin Panel");
+System.out.println("8. Exit");
             System.out.println("================================");
 
             System.out.print("Enter your choice: ");
-            choice = scanner.nextInt();
+            choice = getIntegerInput(scanner);
 
             switch (choice) {
 
@@ -142,7 +143,7 @@ public class Main {
                     System.out.println("2. Interstellar - 9:30 PM");
 
                     System.out.print("Enter show choice: ");
-                    int seatShowChoice = scanner.nextInt();
+                    int seatShowChoice = getIntegerInput(scanner);
 
                     if (seatShowChoice == 1) {
 
@@ -172,7 +173,7 @@ public class Main {
                     System.out.println("2. Interstellar - 9:30 PM");
 
                     System.out.print("Enter show choice: ");
-                    int showChoice = scanner.nextInt();
+                    int showChoice = getIntegerInput(scanner);
 
                     Show selectedShow = null;
 
@@ -191,7 +192,7 @@ public class Main {
                     }
 
                     System.out.print("Enter seat number: ");
-                    int seatNumber = scanner.nextInt();
+                    int seatNumber = getIntegerInput(scanner);
 
                     try {
 
@@ -246,45 +247,120 @@ public class Main {
 
                 case 6:
 
-                    System.out.println("\n=========================");
-                    System.out.println("       ADMIN PANEL");
-                    System.out.println("=========================");
-                    System.out.println("1. View Admin Details");
-                    System.out.println("2. View All Bookings");
-                    System.out.println("3. Back to Main Menu");
-                    System.out.println("=========================");
+    System.out.println("\n===== CANCEL TICKET =====");
 
-                    System.out.print("Enter your choice: ");
-                    int adminChoice = scanner.nextInt();
+    System.out.println("1. Avengers: Endgame - 7:00 PM");
+    System.out.println("2. Interstellar - 9:30 PM");
 
-                    switch (adminChoice) {
+    System.out.print("Enter show choice: ");
+    int cancelShowChoice = getIntegerInput(scanner);
 
-                        case 1:
+    Show cancelShow = null;
 
-                            System.out.println("\n===== ADMIN DETAILS =====");
-                            admin.displayUser();
+    if (cancelShowChoice == 1) {
 
-                            break;
+        cancelShow = show1;
 
-                        case 2:
+    } else if (cancelShowChoice == 2) {
 
-                            System.out.println("\n===== ALL BOOKINGS =====");
-                            Booking.viewBookings();
+        cancelShow = show2;
 
-                            break;
+    } else {
 
-                        case 3:
+        System.out.println("Invalid show choice!");
+        break;
+    }
 
-                            System.out.println("Returning to main menu...");
+    System.out.print("Enter seat number to cancel: ");
+    int cancelSeatNumber = getIntegerInput(scanner);
 
-                            break;
+    boolean cancelled = cancelShow.cancelSeat(cancelSeatNumber);
 
-                        default:
+    if (cancelled) {
 
-                            System.out.println(
-                                    "Invalid admin choice!"
-                            );
-                    }
+        System.out.println("Ticket cancelled successfully!");
+
+    } else {
+
+        System.out.println(
+                "Cancellation failed. The seat is not booked."
+        );
+    }
+
+    break;
+
+                case 7:
+
+    System.out.println("\n===== ADMIN LOGIN =====");
+
+    scanner.nextLine(); // clear input buffer
+
+    System.out.print("Enter Admin ID: ");
+    String adminId = scanner.nextLine();
+
+    System.out.print("Enter Admin Password: ");
+    String adminPassword = scanner.nextLine();
+
+    if (adminId.equals(admin.getAdminId())
+            && adminPassword.equals("admin123")) {
+
+        System.out.println("\nLogin successful!");
+
+        int adminChoice;
+
+        do {
+
+            System.out.println("\n=========================");
+            System.out.println("       ADMIN PANEL");
+            System.out.println("=========================");
+            System.out.println("1. View Admin Details");
+            System.out.println("2. View All Bookings");
+            System.out.println("3. Back to Main Menu");
+            System.out.println("=========================");
+
+            System.out.print("Enter your choice: ");
+            adminChoice = getIntegerInput(scanner);
+
+            switch (adminChoice) {
+
+                case 1:
+
+                    System.out.println("\n===== ADMIN DETAILS =====");
+                    admin.displayUser();
+
+                    break;
+
+                case 2:
+
+                    System.out.println("\n===== ALL BOOKINGS =====");
+                    Booking.viewBookings();
+
+                    break;
+
+                case 3:
+
+                    System.out.println(
+                            "Returning to main menu..."
+                    );
+
+                    break;
+
+                default:
+
+                    System.out.println(
+                            "Invalid admin choice!"
+                    );
+            }
+
+        } while (adminChoice != 3);
+
+    } else {
+
+        System.out.println(
+                "Invalid Admin ID or Password!"
+        );
+    }
+
 
                     break;
 
@@ -292,7 +368,7 @@ public class Main {
                 // EXIT
                 // =========================
 
-                case 7:
+                case 8:
 
                     System.out.println(
                             "\nThank you for using Movie Ticket Booking System!"
@@ -307,8 +383,18 @@ public class Main {
                     );
             }
 
-        } while (choice != 7);
+        } while (choice != 8);
 
-        scanner.close();
+       scanner.close();
+    }
+
+    public static int getIntegerInput(Scanner scanner) {
+
+        while (!scanner.hasNextInt()) {
+            System.out.println("Invalid input! Please enter a number.");
+            scanner.next();
+        }
+
+        return scanner.nextInt();
     }
 }

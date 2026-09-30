@@ -16,3 +16,30 @@ Show Time: 9:30 PM
 Seat Number: 3
 Ticket Price: ₹200.0
 -------------------------
+===== BOOKING =====
+Booking ID: 1001
+Customer: parth
+Email: parth@gmail.com
+Movie: Avengers: Endgame
+Show Time: 7:00 PM
+Seat Number: 2
+Ticket Price: ₹250.0
+-------------------------
+===== BOOKING =====
+Booking ID: 1001
+Customer: Parth
+Email: parth@gmail.com
+Movie: Avengers: Endgame
+Show Time: 7:00 PM
+Seat Number: 2
+Ticket Price: ₹250.0
+-------------------------
+===== BOOKING =====
+Booking ID: 1001
+Customer: parth
+Email: parth@gmail.com
+Movie: Avengers: Endgame
+Show Time: 7:00 PM
+Seat Number: 3
+Ticket Price: ₹250.0
+-------------------------
