@@ -87,13 +87,5 @@ public class Booking {
         }
     }
 
-    public void displayCancellation() {
-
-    System.out.println("===== BOOKING CANCELLED =====");
-    System.out.println("Booking ID: " + bookingId);
-    System.out.println("Customer: " + customer.getName());
-    System.out.println("Movie: " + show.getMovie().getTitle());
-    System.out.println("Seat Number: " + seat.getSeatNumber());
-    System.out.println("Your ticket has been cancelled.");
-}
+    
 }

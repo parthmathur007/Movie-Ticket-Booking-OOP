@@ -80,7 +80,7 @@ public class Main {
                 101
         );
 
-        int bookingId = 1001;
+        int bookingId = (int) (System.currentTimeMillis() % 100000);
         int choice;
 
         // =========================
