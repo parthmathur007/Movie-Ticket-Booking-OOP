@@ -17,7 +17,7 @@ public class User {
     }
 
     public void displayUser() {
-        System.out.println("Name: " + name);
+        System.out.println("User: " + name);
         System.out.println("Email: " + email);
     }
 }

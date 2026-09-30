@@ -11,8 +11,14 @@ public class Customer extends User {
         return customerId;
     }
 
+    @Override
+    public void displayUser() {
+        System.out.println("Customer: " + getName());
+        System.out.println("Email: " + getEmail());
+        System.out.println("Customer ID: " + customerId);
+    }
+
     public void displayCustomer() {
         displayUser();
-        System.out.println("Customer ID: " + customerId);
     }
 }
