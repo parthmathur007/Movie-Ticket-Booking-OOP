@@ -53,6 +53,16 @@ public class Main {
         theatre.addShow(show2, 1);
 
         // =========================
+        // CREATE ADMIN
+        // =========================
+
+        Admin admin = new Admin(
+                "Admin",
+                "admin@movie.com",
+                "A001"
+        );
+
+        // =========================
         // CUSTOMER DETAILS
         // =========================
 
@@ -87,7 +97,8 @@ public class Main {
             System.out.println("3. View Seats");
             System.out.println("4. Book Ticket");
             System.out.println("5. View Previous Bookings");
-            System.out.println("6. Exit");
+            System.out.println("6. Admin Panel");
+            System.out.println("7. Exit");
             System.out.println("================================");
 
             System.out.print("Enter your choice: ");
@@ -230,10 +241,58 @@ public class Main {
                     break;
 
                 // =========================
-                // EXIT
+                // ADMIN PANEL
                 // =========================
 
                 case 6:
+
+                    System.out.println("\n=========================");
+                    System.out.println("       ADMIN PANEL");
+                    System.out.println("=========================");
+                    System.out.println("1. View Admin Details");
+                    System.out.println("2. View All Bookings");
+                    System.out.println("3. Back to Main Menu");
+                    System.out.println("=========================");
+
+                    System.out.print("Enter your choice: ");
+                    int adminChoice = scanner.nextInt();
+
+                    switch (adminChoice) {
+
+                        case 1:
+
+                            System.out.println("\n===== ADMIN DETAILS =====");
+                            admin.displayUser();
+
+                            break;
+
+                        case 2:
+
+                            System.out.println("\n===== ALL BOOKINGS =====");
+                            Booking.viewBookings();
+
+                            break;
+
+                        case 3:
+
+                            System.out.println("Returning to main menu...");
+
+                            break;
+
+                        default:
+
+                            System.out.println(
+                                    "Invalid admin choice!"
+                            );
+                    }
+
+                    break;
+
+                // =========================
+                // EXIT
+                // =========================
+
+                case 7:
 
                     System.out.println(
                             "\nThank you for using Movie Ticket Booking System!"
@@ -248,7 +307,7 @@ public class Main {
                     );
             }
 
-        } while (choice != 6);
+        } while (choice != 7);
 
         scanner.close();
     }
