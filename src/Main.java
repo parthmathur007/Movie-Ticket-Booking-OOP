@@ -6,18 +6,12 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        // =========================
-        // CREATE MOVIE
-        // =========================
         Movie movie1 = new Movie(
                 "Avengers: Endgame",
                 "Action",
                 250.0
         );
 
-        // =========================
-        // CREATE SHOW
-        // =========================
         Show show1 = new Show(
                 101,
                 movie1,
@@ -25,9 +19,6 @@ public class Main {
                 5
         );
 
-        // =========================
-        // CREATE THEATRE
-        // =========================
         Theatre theatre = new Theatre(
                 "MUJ Cinemas",
                 "Jaipur",
@@ -36,9 +27,6 @@ public class Main {
 
         theatre.addShow(show1, 0);
 
-        // =========================
-        // CREATE CUSTOMER
-        // =========================
         System.out.println("===== WELCOME TO MOVIE TICKET BOOKING =====");
 
         System.out.print("Enter your name: ");
@@ -56,9 +44,6 @@ public class Main {
         int bookingId = 1001;
         int choice;
 
-        // =========================
-        // MAIN MENU
-        // =========================
         do {
 
             System.out.println("\n================================");
@@ -68,7 +53,8 @@ public class Main {
             System.out.println("2. View Shows");
             System.out.println("3. View Seats");
             System.out.println("4. Book Ticket");
-            System.out.println("5. Exit");
+            System.out.println("5. View Previous Bookings");
+            System.out.println("6. Exit");
             System.out.println("================================");
 
             System.out.print("Enter your choice: ");
@@ -118,13 +104,13 @@ public class Main {
                             System.out.println();
                             booking.displayBooking();
 
+                            booking.saveToFile();
+
                             bookingId++;
 
                         } else {
 
-                            System.out.println(
-                                    "Invalid seat number!"
-                            );
+                            System.out.println("Invalid seat number!");
                         }
 
                     } catch (SeatAlreadyBookedException e) {
@@ -137,6 +123,12 @@ public class Main {
                     break;
 
                 case 5:
+
+                    Booking.viewBookings();
+
+                    break;
+
+                case 6:
 
                     System.out.println(
                             "\nThank you for using Movie Ticket Booking System!"
@@ -151,7 +143,7 @@ public class Main {
                     );
             }
 
-        } while (choice != 5);
+        } while (choice != 6);
 
         scanner.close();
     }

@@ -1,0 +1,9 @@
+===== BOOKING =====
+Booking ID: 1001
+Customer: parth
+Email: parth@gmail.com
+Movie: Avengers: Endgame
+Show Time: 7:00 PM
+Seat Number: 1
+Ticket Price: ₹250.0
+-------------------------
